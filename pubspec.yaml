@@ -78,8 +78,8 @@ flutter:
   fonts:
     - family: League Spartan
       fonts:
-        - asset: fonts/LeagueSpartan-VariableFont_wght.ttf
+        - asset: fonts/LeagueSpartan-Bold.ttf
           weight: 900
-  #
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

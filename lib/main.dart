@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'HomeScreen.dart';
-import 'package:calculator/themes/Themes.dart';
+import 'widgets/home_screen.dart';
+import 'package:calculator/themes/custom_themes.dart';
 
 void main() => runApp(Root());
 
 class Root extends StatelessWidget {
   Root({Key? key}) : super(key: key);
-  Themes themes = Themes();
+  final Themes themes = Themes();
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
