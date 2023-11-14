@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ButtonBuilder extends StatelessWidget {
-
   final String number;
+
   const ButtonBuilder({Key? key, required this.number}) : super(key: key);
 
   @override
@@ -13,9 +13,16 @@ class ButtonBuilder extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
           color: const Color(0xffEAE3DB)),
-      child:  Align(
+      child: Align(
           alignment: Alignment.center,
-          child: Text(number, style: const TextStyle(fontSize: 35.0, fontFamily: "League Spartan", color: Color(0xff454A57), fontWeight: FontWeight.bold),)),
+          child: Text(
+            number,
+            style: const TextStyle(
+                fontSize: 35.0,
+                fontFamily: "League Spartan",
+                color: Color(0xff454A57),
+                fontWeight: FontWeight.bold),
+          )),
     );
   }
 }
