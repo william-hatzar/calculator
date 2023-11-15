@@ -30,7 +30,13 @@ class _ButtonBuilderState extends State<ButtonBuilder> {
 
 
     return GestureDetector(
-      onTap: () => widget.onPressedCallback(widget.text),
+      onTap: () => {
+        if(widget.text == "x") {
+          widget.onPressedCallback("*")
+        } else {
+          widget.onPressedCallback(widget.text)
+        }
+      },
       child: Container(
         height: widget.height,
         width: widget.width,
