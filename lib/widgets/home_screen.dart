@@ -1,6 +1,10 @@
+import 'package:calculator/constants/app_colours.dart';
+import 'package:calculator/util/calc_util.dart';
 import 'package:calculator/widgets/button_builder.dart';
+import 'package:calculator/widgets/input_box.dart';
 import 'package:flutter/material.dart';
 import 'main_header.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,6 +14,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  AppColours appColours = AppColours();
+  CalcUtil calcUtil = CalcUtil();
+  String _expression = '';
+  double _result = 0.0;
+
+  void onButtonPressed(String text) {
+    setState(() {
+      if (text == '=') {
+        try {
+          _result = calcUtil.evalExpression(_expression);
+        } catch (e) {
+          _result = 0.0;
+        }
+        _expression = _result.toString();
+      } else if (text == 'DEL') {
+        _expression = '';
+        _result = 0.0;
+      } else {
+        _expression += text;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,19 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             const SizedBox(height: 50.0),
-            //Header
             const Header(),
             const SizedBox(height: 25.0),
-            //Input Box
-            Container(
-                padding: EdgeInsets.all(30.0),
-                height: 100,
-                width: 450,
-                decoration: BoxDecoration(
-                    color: const Color(0xff181F33),
-                    borderRadius: BorderRadius.circular(10.0)),
-              child: const Align(alignment: Alignment.bottomRight,child: Text("399,981", style: TextStyle(fontFamily: "League Spartan", color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.bold)),)
-            ),
+            InputBox(expression: _expression),
             const SizedBox(height: 30.0),
             Container(
               height: 550,
@@ -46,88 +63,203 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: Row(
                         children: [
-                          const ButtonBuilder(number: "7"),
+                          ButtonBuilder(
+                            text: "7",
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
                           const SizedBox(width: 15.0),
-                          const ButtonBuilder(number: "8"),
+                          ButtonBuilder(
+                            text: "8",
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
                           const SizedBox(width: 15.0),
-                          const ButtonBuilder(number: "9"),
+                          ButtonBuilder(
+                            text: "9",
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
                           const SizedBox(width: 15.0),
-                          Container(
-                              height: 70,
+                          ButtonBuilder(
+                              text: "DEL",
                               width: 65,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: const Color(0xff637395)),
-                              child: const Align(
-                                  alignment: Alignment.center,
-                                  child: Text("DEL",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: "League Spartan",
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 20.00)))),
-                        ],
-                      ),
-                    ),
-                    const Expanded(
-                      child: Row(
-                        children: [
-                           ButtonBuilder(number: "4"),
-                           SizedBox(width: 15.0),
-                           ButtonBuilder(number: "5"),
-                           SizedBox(width: 15.0),
-                           ButtonBuilder(number: "6"),
-                           SizedBox(width: 15.0),
-                           ButtonBuilder(number: "+"),
-                        ],
-                      ),
-                    ),
-                    const Expanded(
-                      child: Row(
-                        children: [
-                           ButtonBuilder(number: "1"),
-                           SizedBox(width: 15.0),
-                           ButtonBuilder(number: "2"),
-                           SizedBox(width: 15.0),
-                           ButtonBuilder(number: "3"),
-                           SizedBox(width: 15.0),
-                           ButtonBuilder(number: "-"),
-                        ],
-                      ),
-                    ),
-                    const Expanded(
-                      child: Row(
-                        children: [
-                          ButtonBuilder(number: "."),
-                           SizedBox(width: 15.0),
-                          ButtonBuilder(number: "0"),
-                           SizedBox(width: 15.0),
-                          ButtonBuilder(number: "/"),
-                           SizedBox(width: 15.0),
-                          ButtonBuilder(number: "x"),
+                              height: 70,
+                              buttonBackground: appColours.deleteColor,
+                              buttonColour: appColours.whiteTextColour,
+                              fontSize: 20.00,
+                            onPressedCallback: onButtonPressed,)
                         ],
                       ),
                     ),
                     Expanded(
                       child: Row(
                         children: [
-                          Container(
+                          ButtonBuilder(
+                            text: "4",
                             height: 70,
-                            width: 145,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                color: const Color(0xff647299)),
-                            child: const Align(child: Text("RESET", style: TextStyle(fontFamily: "League Spartan", color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold)),),
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
-                          Container(
+                          ButtonBuilder(
+                            text: "5",
                             height: 70,
-                            width: 145,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                color: const Color(0xffD13F30)),
-                            child: const Align(child: Text("=", style: TextStyle(fontFamily: "League Spartan", color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold)),),
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
                           ),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                            text: "6",
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                            text: '+',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          ButtonBuilder(
+                            text: '1',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                            text: '2',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                            text: '3',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                            text: '-',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          ButtonBuilder(
+                            text: '.',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                            text: '0',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                            text: '/',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                            text: 'x',
+                            height: 70,
+                            width: 65,
+                            buttonBackground: appColours.buttonBackground,
+                            buttonColour: appColours.buttonColour,
+                            fontSize: 35,
+                            onPressedCallback: onButtonPressed,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          ButtonBuilder(
+                              text: "RESET",
+                              width: 145,
+                              height: 70,
+                              buttonBackground: appColours.deleteColor,
+                              buttonColour: appColours.whiteTextColour,
+                              fontSize: 20.0,
+                              onPressedCallback: onButtonPressed),
+                          const SizedBox(width: 15.0),
+                          ButtonBuilder(
+                              text: "=",
+                              width: 145,
+                              height: 70,
+                              buttonBackground:
+                                  appColours.equalsButtonBackground,
+                              buttonColour: appColours.whiteTextColour,
+                              fontSize: 20.0,
+                            onPressedCallback: onButtonPressed,)
                         ],
                       ),
                     ),

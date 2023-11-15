@@ -13,12 +13,12 @@ class _HeaderState extends State<Header> {
     return const Row(
       children: [
         Text("calc",
-          style: TextStyle(
-            fontFamily: "League Spartan",
-            fontSize: 30.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white
-          )
+            style: TextStyle(
+                fontFamily: "League Spartan",
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white
+            )
         )
       ],
     );
