@@ -1,7 +1,10 @@
 import 'package:calculator/constants/app_colours.dart';
 import 'package:calculator/util/calc_util.dart';
 import 'package:calculator/widgets/button_builder.dart';
+import 'package:calculator/widgets/delete_button.dart';
+import 'package:calculator/widgets/equals_button.dart';
 import 'package:calculator/widgets/input_box.dart';
+import 'package:calculator/widgets/reset_button.dart';
 import 'package:flutter/material.dart';
 import 'main_header.dart';
 
@@ -36,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     } else if (items[currentIndex] == "Theme 2") {
       return const Color(0xffD3CDCD);
     } else {
-      return const Color(0xff17062A);
+      return const Color(0xff1E0836);
     }
   }
 
@@ -97,9 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: "7",
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -107,9 +110,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: "8",
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -117,19 +120,20 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: "9",
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
-                          ButtonBuilder(
+                          DeleteButton(
                               text: "DEL",
                               width: 65,
                               height: 70,
-                              buttonBackground: appColours.deleteColor,
-                              buttonColour: appColours.whiteTextColour,
                               fontSize: 20.00,
+                              buttonColour: Colors.white,
+                              items: items,
+                              currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,)
                         ],
                       ),
@@ -141,9 +145,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: "4",
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -151,9 +155,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: "5",
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -161,9 +165,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: "6",
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -171,9 +175,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: '+',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                         ],
@@ -186,9 +190,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: '1',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -196,9 +200,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: '2',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -206,9 +210,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: '3',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -216,9 +220,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: '-',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                         ],
@@ -231,9 +235,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: '.',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -241,9 +245,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: '0',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -251,9 +255,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: '/',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                           const SizedBox(width: 15.0),
@@ -261,9 +265,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: 'x',
                             height: 70,
                             width: 65,
-                            buttonBackground: appColours.buttonBackground,
-                            buttonColour: appColours.buttonColour,
                             fontSize: 35,
+                            items: items,
+                            currentIndex: currentIndex,
                             onPressedCallback: onButtonPressed,
                           ),
                         ],
@@ -272,24 +276,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: Row(
                         children: [
-                          ButtonBuilder(
+                          ResetButton(
                               text: "RESET",
                               width: 145,
                               height: 70,
-                              buttonBackground: appColours.deleteColor,
                               buttonColour: appColours.whiteTextColour,
                               fontSize: 20.0,
-                              onPressedCallback: onButtonPressed),
+                              onPressedCallback: onButtonPressed, items: items, currentIndex: currentIndex),
                           const SizedBox(width: 15.0),
-                          ButtonBuilder(
+                          EqualsButton(
                               text: "=",
                               width: 145,
                               height: 70,
-                              buttonBackground:
-                                  appColours.equalsButtonBackground,
                               buttonColour: appColours.whiteTextColour,
                               fontSize: 20.0,
-                            onPressedCallback: onButtonPressed,)
+                            onPressedCallback: onButtonPressed,
+                            currentIndex: currentIndex,
+                              items: items)
                         ],
                       ),
                     ),

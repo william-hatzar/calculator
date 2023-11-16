@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ButtonBuilder extends StatefulWidget {
+class DeleteButton extends StatefulWidget {
   final String text;
   final double height;
   final double width;
+  final Color buttonColour;
   final double fontSize;
   final List items;
   final int currentIndex;
@@ -11,52 +12,41 @@ class ButtonBuilder extends StatefulWidget {
 
   Color getLineColour() {
     if (items[currentIndex] == "Theme 1") {
-      return const Color(0xffB5A69A);
+      return Color(0xff404E75);
     } else if (items[currentIndex] == "Theme 2") {
-      return const Color(0xffA99D90);
+      return const Color(0xff1A5F66);
     } else {
-      return const Color(0xff851C9B);
+      return const Color(0xffBB18F6);
     }
   }
 
   Color getButtonBackground() {
     if (items[currentIndex] == "Theme 1") {
-      return const Color(0xffE9E3DB);
+      return Color(0xff637395);
     } else if (items[currentIndex] == "Theme 2") {
-      return const Color(0xffE6E4E0);
+      return const Color(0xff398187);
     } else {
-      return const Color(0xff331B4D);
+      return const Color(0xff56077C);
     }
   }
 
-  Color getButtonTextColour() {
-    if (items[currentIndex] == "Theme 1") {
-      return const Color(0xff454857);
-    } else if (items[currentIndex] == "Theme 2") {
-      return const Color(0xff454857);
-    } else {
-      return Colors.yellow;
-    }
-  }
-
-  const ButtonBuilder({
+  const DeleteButton({
     Key? key,
     required this.text,
     required this.width,
     required this.height,
+    required this.buttonColour,
     required this.fontSize,
-    required this.items,
-    required this.currentIndex,
     required this.onPressedCallback,
+    required this.currentIndex,
+    required this.items
   }) : super(key: key);
 
   @override
-  State<ButtonBuilder> createState() => _ButtonBuilderState();
+  State<DeleteButton> createState() => _DeleteButtonState();
 }
 
-
-
-class _ButtonBuilderState extends State<ButtonBuilder> {
+class _DeleteButtonState extends State<DeleteButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -86,7 +76,7 @@ class _ButtonBuilderState extends State<ButtonBuilder> {
                 style: TextStyle(
                   fontSize: widget.fontSize,
                   fontFamily: "League Spartan",
-                  color: widget.getButtonTextColour(),
+                  color: widget.buttonColour,
                   fontWeight: FontWeight.bold,
                 ),
               ),
