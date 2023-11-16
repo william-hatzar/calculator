@@ -30,6 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Color containerBackGroundColour() {
+    if (items[currentIndex] == "Theme 1") {
+      return const Color(0xff252D44);
+    } else if (items[currentIndex] == "Theme 2") {
+      return const Color(0xffD3CDCD);
+    } else {
+      return const Color(0xff17062A);
+    }
+  }
+
   void cycleItems() {
     setState(() {
       currentIndex = (currentIndex + 1) % items.length;
@@ -68,13 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 50.0),
             Header(items: items, currentIndex: currentIndex, onPressedCallback: cycleItems),
             const SizedBox(height: 25.0),
-            InputBox(expression: _expression),
+            InputBox(expression: _expression, items: items, currentIndex: currentIndex,),
             const SizedBox(height: 30.0),
             Container(
               height: 550,
               width: 450,
               decoration: BoxDecoration(
-                  color: const Color(0xff252D44),
+                  color:  containerBackGroundColour(),
                   borderRadius: BorderRadius.circular(10.0)),
               child: Padding(
                 padding: const EdgeInsets.all(22.0),
