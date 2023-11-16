@@ -7,10 +7,7 @@ class CalcUtil {
     Parser p = Parser();
     Expression exp = p.parse(expression);
     ContextModel cm = ContextModel();
-
     // Ensure that multiplication is supported
-    exp = exp.simplify();
-
     return exp.evaluate(EvaluationType.REAL, cm);
   }
 

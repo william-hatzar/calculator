@@ -18,6 +18,23 @@ class _HomeScreenState extends State<HomeScreen> {
   CalcUtil calcUtil = CalcUtil();
   String _expression = '';
   double _result = 0.0;
+  List<String> items = ["Theme 1", "Theme 2", "Theme 3"];
+  int currentIndex = 0;
+  Color getBackgroundColor() {
+    if (items[currentIndex] == "Theme 1") {
+      return const Color(0xff3B4664);
+    } else if (items[currentIndex] == "Theme 2") {
+      return const Color(0xffE6E6E6);
+    } else {
+      return const Color(0xff17062A);
+    }
+  }
+
+  void cycleItems() {
+    setState(() {
+      currentIndex = (currentIndex + 1) % items.length;
+    });
+  }
 
   void onButtonPressed(String text) {
     setState(() {
@@ -31,6 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
       } else if (text == 'DEL') {
         _expression = '';
         _result = 0.0;
+      } else if (text == 'RESET') {
+        _expression = '';
+        _result = 0.0;
       } else {
         _expression += text;
       }
@@ -40,13 +60,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff3B4664),
+      backgroundColor: getBackgroundColor(),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             const SizedBox(height: 50.0),
-            const Header(),
+            Header(items: items, currentIndex: currentIndex, onPressedCallback: cycleItems),
             const SizedBox(height: 25.0),
             InputBox(expression: _expression),
             const SizedBox(height: 30.0),
