@@ -4,7 +4,6 @@ class EqualsButton extends StatefulWidget {
   final String text;
   final double height;
   final double width;
-  final Color buttonColour;
   final double fontSize;
   final List items;
   final int currentIndex;
@@ -35,7 +34,6 @@ class EqualsButton extends StatefulWidget {
     required this.text,
     required this.width,
     required this.height,
-    required this.buttonColour,
     required this.fontSize,
     required this.onPressedCallback,
     required this.currentIndex,
@@ -76,7 +74,7 @@ class _EqualsButtonState extends State<EqualsButton> {
                 style: TextStyle(
                   fontSize: widget.fontSize,
                   fontFamily: "League Spartan",
-                  color: widget.buttonColour,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
