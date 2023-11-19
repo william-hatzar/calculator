@@ -1,4 +1,3 @@
-import 'package:calculator/constants/app_colours.dart';
 import 'package:calculator/util/calc_util.dart';
 import 'package:calculator/widgets/button_builder.dart';
 import 'package:calculator/widgets/delete_button.dart';
@@ -17,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  AppColours appColours = AppColours();
   CalcUtil calcUtil = CalcUtil();
   String _expression = '';
   double _result = 0.0;
@@ -280,7 +278,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               text: "RESET",
                               width: 145,
                               height: 70,
-                              buttonColour: appColours.whiteTextColour,
                               fontSize: 20.0,
                               onPressedCallback: onButtonPressed, items: items, currentIndex: currentIndex),
                           const SizedBox(width: 15.0),
@@ -288,7 +285,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               text: "=",
                               width: 145,
                               height: 70,
-                              buttonColour: appColours.whiteTextColour,
                               fontSize: 20.0,
                             onPressedCallback: onButtonPressed,
                             currentIndex: currentIndex,
